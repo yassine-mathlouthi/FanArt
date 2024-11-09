@@ -1,0 +1,76 @@
+mat-card
+{  margin-top: 1%;
+    background-color:whitesmoke;
+  margin-right: 25%;
+  text-align: left;
+  margin-left: 25%;
+}
+mat-card-header
+{
+padding-left: 25%;
+}
+.mat-mdc-form-field
+{  height: 80%;
+  width: 80%;
+  margin:1%;
+}
+
+.mat-50
+{
+width: 40%;
+margin-left: 7%;
+margin-right: 2%;
+
+
+}
+.card-decp1{
+  font-size: 14px;
+
+}
+
+.card-name{
+  font-size: 17px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.mat-60
+{
+width: 40%;
+
+}
+.mat-70
+{
+  margin-left: 7%;
+
+  width:83% ;
+}
+.mat-80
+{
+  margin-left: 6%;
+
+  
+}
+.mat-90
+{
+  margin-left: 7%;
+}
+.mat-100
+{
+  margin-left: 9.7%;
+}
+/* Exemple de classe CSS personnalisée */
+.custom-purple-button {
+  background-color: blue;
+  color: white;
+  border-radius: 5px; /* Vous pouvez ajuster le rayon selon vos préférences */
+  padding: 10px 20px; /* Ajustez les marges intérieures selon vos préférences */
+  cursor: pointer;
+  background-color: darkblue; 
+  margin-left: 40%;
+  margin-top: 4%;
+  margin-bottom: 5%;
+}
+
+
+.bbg{
+  background-color:#6f42c1; 
+}

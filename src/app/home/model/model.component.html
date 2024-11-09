@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<div class="conatiner-fluid">
+    <div class="body">
+
+        <app-navbar></app-navbar>
+
+        <div class="col text-title animate__animated animate__fadeInDown">
+            Let the IA decide !
+        </div>
+        <div class="col-7 mt-4 mx-auto text-subtitle animate__animated animate__fadeInUp">
+            Our model analyze resumes and predict the category or field associated with the skills mentioned in the
+            resumes. It utilizes various natural language processing techniques, including tokenization, lemmatization,
+            and named entity recognition (NER), to extract relevant information from the resumes. Additionally, the
+            model incorporates machine learning algorithms such as Random Forest and Decision Tree classifiers to make
+            predictions based on the extracted features. By analyzing the skills mentioned in the resumes, the model
+            aims to categorize them into different domains or fields, such as Human Resources (HR) or others, helping
+            recruiters or organizations efficiently match candidates with job roles or positions that align with their
+            skillsets.
+        </div>
+
+    </div>
+<div class="row">
+    <div class="col mx-auto">
+        <div class="result mb-3">
+            Attach the Resume here:
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-7 mx-auto result">
+        <div class="mt-5 next text-center">
+            <input type="file" #fileInput (change)="onFileChange(fileInput)">
+            <button class="but mt-5" (click)="predictResume(fileInput)">Predict the resume</button>
+          
+        </div>
+    </div>
+    <div class="col">
+        <img src="assets/img/logo.png" class="img-fluid" alt="">
+    </div>
+</div>
+<div class="row">
+    <div class="col text-center result">
+        <div *ngIf="showSpinner" id="spinner">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-4 ml-4 mx-auto">
+        <div *ngIf="predictionResult" class="resultfinale">
+            Prediction result: {{ predictionResult }}
+        </div>
+    </div>
+</div>
+
+
+
+    
+    <app-footer></app-footer>

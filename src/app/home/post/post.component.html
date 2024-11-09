@@ -1,0 +1,52 @@
+<!-- post.component.html -->
+
+<mat-card class="example-card">
+    <mat-card-content>
+      <h1>Formulaire de Candidature</h1>
+  
+      <form [formGroup]="candidatureForm" (ngSubmit)="submitForm()" >
+        <div>
+          <!-- Champ nom et prénom dans le même input -->
+          <mat-form-field appearance="fill">
+            <input matInput placeholder=" " formControlName="fullName" />
+            <mat-label>Nom et Prénom</mat-label>
+          </mat-form-field>
+        </div>
+  
+        <div class="example-form-row">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder=" " formControlName="email" required>
+            <mat-label>Email</mat-label>
+          </mat-form-field>
+        </div>
+  
+        <div class="example-form-row">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder=" "  formControlName="resume" />
+            <mat-label>Votre CV</mat-label>
+            <mat-icon matSuffix (click)="fileInput.click()">attach_file</mat-icon>
+            <input hidden (change)="onFileSelected($event)" #fileInput type="file" />
+            <span class="file-name">{{ selectedFile?.name }}</span>
+          </mat-form-field>
+        </div>
+  
+        <div>
+          <!-- Champ numéro de téléphone -->
+          <mat-form-field appearance="fill">
+            <input matInput placeholder=" " formControlName="phoneNumber" />
+            <mat-label>Numéro de téléphone</mat-label>
+          </mat-form-field>
+        </div>
+  
+        <div class="example-form-row">
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder=" " formControlName="coverLetter" required></textarea>
+            <mat-label>Lettre de motivation</mat-label>
+          </mat-form-field>
+        </div>
+  
+        <button mat-raised-button class="custom-button" type="submit">Ajouter</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  

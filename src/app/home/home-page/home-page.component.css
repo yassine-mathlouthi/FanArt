@@ -1,0 +1,61 @@
+.body {
+    background-image: url("https://i0.wp.com/esrobross.com.ec/wp-content/uploads/2015/07/Business-HD-Wallpaper-1.jpg?ssl=1");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 80vh;
+    /* Set the height of the body to be the viewport height */
+}
+.text-title{
+    font-size: 40px;
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    color: rgb(236, 234, 234);
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+.text-subtitle{
+    font-size: 20px;
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+.card-title{
+    font-size: 20px;
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+    color: rgb(122, 122, 122);
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+.cards{
+    display: flex;
+    justify-content: center;
+    white-space: 10px;
+    cursor: pointer;
+    
+}
+.cards:hover{
+    translate: 0px 1px 0px 1px;
+}
+.card{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.card-img-custom{
+    height: 250px;
+}
+.card-custom:hover{
+    translate: 0px -5px 2px;
+   transition: 0.7s;
+}
+.but
+{
+color: white;
+margin-left: 40%;
+}

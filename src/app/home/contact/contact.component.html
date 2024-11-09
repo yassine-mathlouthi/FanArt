@@ -1,0 +1,45 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+  <div class="body">
+    <app-navbar></app-navbar>
+    <div class="col text-title animate__animated animate__fadeInDown">
+      RESTEZ EN CONTACT
+    </div>
+  </div>
+  <div class="container-fluid">
+
+  <div class="col card-title">
+    Contactez-Nous
+  </div>
+  <section class="contact-section">
+    <div class="container">
+      <div  class="row align-items-center">
+        <!-- Colonne pour le formulaire de contact -->
+        <div  id="card" class=" col-md-6">
+          <form [formGroup]="form" (ngSubmit)="send()" class="contact-form">
+            <div class="form-group">
+              <label for="name" class="label">Name</label>
+              <input formControlName="name" type="text" id="name" name="name" class="input" />
+            </div>
+            <div class="form-group">
+              <label for="email" class="label">Email</label>
+              <input formControlName="email" type="email" id="email" name="email" class="input" />
+            </div>
+            <div class="form-group">
+              <label for="message" class="label">Message</label>
+              <textarea formControlName="message" id="message" name="message" class="textarea"></textarea>
+            </div>
+            <button type="submit" class="submit-button">Send</button>
+          </form>
+        </div>
+        <!-- Colonne pour la carte de localisation -->
+        <div class="col-md-6">
+          <div id="map" style="height: 400px;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <app-footer></app-footer>
+</div>

@@ -1,0 +1,73 @@
+<!-- postuler.component.html -->
+<div class="mb-5">
+  <app-nav2></app-nav2>
+</div>
+
+<div class="container-fluid ">
+  <!-- Bootstrap Navbar -->
+
+
+
+  <div class="pageHeader mt-5">
+    <div class="text-center">
+      <h2 class="card-title " style="  color: #666666 ;">{{ selectedData.titre }}</h2>
+      <h4 class="card-subtitle mb-2 text-muted">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" fill="currentColor"
+          class="bi bi-geo-alt-fill icon" viewBox="0 0 16 16">
+          <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+        </svg>{{ selectedData.lieu }} |
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" fill="currentColor" class="bi bi-clock-fill icon"
+          viewBox="0 0 16 16">
+          <path
+            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z" />
+        </svg>{{ selectedData.temp }}
+      </h4>
+    </div>
+  </div>
+
+
+  <h2 class="overview">Overview</h2>
+  <div class="container">
+    <div class="row ">
+      <div class="col-md-7 ">
+        <h3 class="image-container">
+          <img class="img-fluid " [src]="selectedData.image" alt="Card image cap">
+        </h3>
+      </div>
+      <div class="col-md-3 next text-center">
+        <img src="assets/img/logo.png" class="img-fluid" alt="">
+  
+        <input type="button" class="but" value="Apply for job" (click)="openDialog()" href="#apply-overlay">
+      </div>
+    </div>
+  </div>
+  
+
+
+
+
+  <!-- Rest of the page content -->
+  <div class="col-md-8 mt-5  ">
+    <h2 class="overview">Description</h2>
+    <p class="overvie">{{ selectedData.descriptionPoste }}</p>
+
+    <h2 class="overview">Qualification</h2>
+    <p class="overvie">{{ selectedData.qualification }}</p>
+
+    <h2 class="overview">Poste Ouvert</h2>
+    <p class="overvie">{{ selectedData.posteOuvert }}</p>
+
+    <h2 class="overview">Contrat</h2>
+    <p class="overvie">{{ selectedData.contrat }}</p>
+
+  </div>
+
+
+</div>
+
+<!-- home-page.component.html -->
+<div>
+  <!-- Other content of the home page -->
+
+</div>
+<app-footer></app-footer>

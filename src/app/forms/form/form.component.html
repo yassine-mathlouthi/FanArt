@@ -1,0 +1,128 @@
+
+<mat-card>
+  <mat-card-header class="mat-card-header">
+    <mat-card-title>Formulaire de Recherche de Candidats</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <!-- form.component.html -->
+    <form [formGroup]="ia_scrapping" (ngSubmit)="submitForm()">
+
+
+    <mat-form-field class="mat-70">
+      <input matInput placeholder=" " formControlName="variable" required>
+      <mat-label>Search here :(exemple : python devlopper)</mat-label>
+    </mat-form-field>
+
+
+   <!--  <mat-form-field class="mat-70">
+      <mat-label>Compétences</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let language of programmingLanguages" [value]="language">
+          {{ language }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> -->
+
+
+
+
+   <!--  <mat-form-field class="mat-50">
+      <mat-label>année(s) d'expérience(s)</mat-label>
+      <mat-select>
+        <mat-option value="zero">1 ans(-) </mat-option>
+        <mat-option value="one">1 ans </mat-option>
+        <mat-option value="two">2 ans</mat-option>
+        <mat-option value="tree">3 ans</mat-option>
+        <mat-option value="four">3 ans(+)</mat-option>
+
+      </mat-select>
+    </mat-form-field> -->
+
+<!-- 
+    <mat-form-field class="mat-60">
+      <mat-label>Ville</mat-label>
+      <input matInput>
+    </mat-form-field> -->
+
+   <!--  <mat-form-field class="mat-70">
+      <mat-label>Niveau d'éducation</mat-label>
+      <mat-select>
+        <mat-option value="bachelor">Bac</mat-option>
+        <mat-option value="licence">Licence</mat-option>
+        <mat-option value="master">Master</mat-option>
+        <mat-option value="phd">Ph.D.</mat-option>
+      </mat-select>
+    </mat-form-field> -->
+
+    <!--  <mat-form-field class="mat-70">
+        <mat-label>Disponibilité</mat-label>
+        <mat-select >
+          <mat-option value="jour">Jour</mat-option>
+          <mat-option value="soir">Soir</mat-option>
+          <mat-option value="nuit">Nuit</mat-option>
+          <mat-option value="finDeSemaine">Fin de semaine</mat-option>
+        </mat-select>
+      </mat-form-field> -->
+
+    <!-- Niveau de Français -->
+    <mat-form-field class="mat-50">
+      <mat-label>Niveau de Français</mat-label>
+      <mat-select>
+        <mat-option value="debutant">Débutant</mat-option>
+        <mat-option value="avance">Avancé</mat-option>
+        <mat-option value="expert">Expert</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Niveau d'Anglais -->
+    <mat-form-field class="mat-60">
+      <mat-label>Niveau d'Anglais</mat-label>
+      <mat-select>
+        <mat-option value="debutant">Débutant</mat-option>
+        <mat-option value="avance">Avancé</mat-option>
+        <mat-option value="expert">Expert</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- <section class="example-section mat-70">
+        <span class="example-margin">Sexe :</span>
+        <mat-radio-group class="example-margin" >
+          <mat-radio-button class="circle-radio" value="homme">Homme</mat-radio-button>
+          <mat-radio-button class="circle-radio" value="femme">Femme</mat-radio-button>
+        </mat-radio-group>
+      </section> -->
+    <section>
+      <div class="example-button-row">
+        <button mat-button class="custom-purple-button bbg">Recherche</button>
+      </div>
+    </section>
+  </form>
+  </mat-card-content>
+
+</mat-card>
+
+<div class="">
+  
+
+  <div class="col-7 mt-4 mx-auto"  >
+    <div class="" *ngIf="progress_bar">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+    
+    <div class="" *ngFor="let item of data" >
+      
+      <div class="card mb-5">
+        <div class="card-header card-name">
+          Nom : {{ item.name }} 
+          
+       
+        </div>
+        <div class="card-body">
+          <h5 class="card-title card-decp1"> {{ item.description }}  </h5>
+          <p class="card-text card-decp1 ">{{ item.description2 }}  </p>
+          <a href="{{item.link}}"  class=""><button mat-button class="custom-purple-button bbg"> Vistez le profile </button></a>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
