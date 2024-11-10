@@ -13,6 +13,7 @@ import { TestComponent } from './test/test.component';
 import { HomeModule } from './home/home.module'; // Verify this import
 import { HomeRoutingModule } from './home/home-routing.module';
 import { Nav2Component } from './nav2/nav2.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { Nav2Component } from './nav2/nav2.component';
     
   ],
   imports: [
+    
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
