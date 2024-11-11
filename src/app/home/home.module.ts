@@ -20,6 +20,8 @@ import { ContactComponent } from './contact/contact.component';
 import { ModelComponent } from './model/model.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MySpaceComponent } from './my-space/my-space.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     DashboredComponent,
     ContactComponent,
     ModelComponent,
+    MySpaceComponent,
+    AddProductComponent,
     
   ],
   imports: [

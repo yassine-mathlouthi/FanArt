@@ -1,0 +1,36 @@
+
+
+<div mat-dialog-content class="container box">
+    <h1 mat-dialog-title class="text-center">Add New Product</h1>
+  <form>
+    <div class="form-group mb-3">
+      <label for="productName" class="form-label">Product Name</label>
+      <input type="text" class="form-control" id="productName" placeholder="Enter product name">
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="productImage" class="form-label">Image Link</label>
+        <input type="text" class="form-control" id="productImage" placeholder="Enter productI mage Link">
+      </div>
+    
+    <div class="form-group mb-3">
+      <label for="productDescription" class="form-label">Description</label>
+      <textarea class="form-control" id="productDescription" rows="3" placeholder="Enter product description"></textarea>
+    </div>
+    
+    <div class="form-group mb-3">
+      <label for="productPrice" class="form-label">Price</label>
+      <input type="number" class="form-control" id="productPrice" placeholder="Enter product price">
+    </div>
+    
+    <div class="form-group mb-3">
+      <label for="productQuantity" class="form-label">Quantity</label>
+      <input type="number" class="form-control" id="productQuantity" placeholder="Enter product quantity">
+    </div>
+  </form>
+</div>
+
+<div mat-dialog-actions class="d-flex justify-content-end">
+  <button mat-button class="custom-btn me-2 ml-3" mat-dialog-close>Cancel</button>
+  <button mat-button class="custom-btn ml-3" type="submit">Add Product</button>
+</div>
