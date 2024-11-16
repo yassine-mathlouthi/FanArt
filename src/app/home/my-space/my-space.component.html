@@ -4,7 +4,20 @@
 <div class="container-fluid body">
     <div class="row">
         <!-- Profile Card -->
+        
         <div class="profile-info-card col-lg-4 col-md-5 mx-auto">
+            <div class="row align-items-center mb-3 d-flex justify-content-between">
+                <div class="col-auto">
+                    <div class="name title">
+                        Votre boutique:
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <button class="btn custom-btn" (click)="openDialog()" >
+                        <i class="fas fa-edit icon"  ></i> Modifer
+                    </button>
+                </div>
+            </div>
             <div class="text-center mb-3">
                 <img src="https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=" class="img img-fluid">
             </div>
@@ -105,4 +118,6 @@
             </div>
         </div>
     </div>
+    <app-footer></app-footer>
 </div>
+
