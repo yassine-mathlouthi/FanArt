@@ -22,6 +22,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MySpaceComponent } from './my-space/my-space.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { AddProductComponent } from './add-product/add-product.component';
     ModelComponent,
     MySpaceComponent,
     AddProductComponent,
+    EditProductComponent,
+    EditProfileComponent,
     
   ],
   imports: [
