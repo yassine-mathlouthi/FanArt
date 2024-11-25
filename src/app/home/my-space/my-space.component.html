@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <app-nav2></app-nav2>
 <div class="container-fluid body">
@@ -6,38 +5,80 @@
         <!-- Profile Card -->
         
         <div class="profile-info-card col-lg-4 col-md-5 mx-auto">
+            <!-- Header with Title and Edit Button -->
             <div class="row align-items-center mb-3 d-flex justify-content-between">
                 <div class="col-auto">
                     <div class="name title">
-                        Votre boutique:
+                        Your Shop:
                     </div>
                 </div>
                 <div class="col-auto">
-                    <button class="btn custom-btn" (click)="openDialog()" >
-                        <i class="fas fa-edit icon"  ></i> Modifer
+                    <button class="btn custom-btn" (click)="open_Dialog_Edit_Profile()">
+                        <i class="fas fa-edit icon"></i> Edit
                     </button>
                 </div>
             </div>
+            
+            <!-- Profile Picture -->
             <div class="text-center mb-3">
-                <img src="https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=" class="img img-fluid">
+                <img 
+                    src="https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=" 
+                    class="img img-fluid"
+                    style="border-radius: 50%; width: 150px; height: 150px;"
+                >
             </div>
-            <div class="text-center name title">
-                <i class="fas fa-store icon"></i> Yassine's Store
+        
+            <!-- Shop Name -->
+            <div class="text-center name title mb-3">
+                <i class="fas fa-store icon"></i> 
+                <span style="color: black;">Shop Name: La Belle Boutique</span>
             </div>
-            <div class="text-center subtitle gray">
-                <i class="fas fa-calendar-alt icon"></i> 30/11/2022
+        
+            <!-- Artisan's Full Name -->
+            <div class="text-center subtitle gray mb-3">
+                <i class="fas fa-user icon"></i> 
+                <span style="color: black;">Name: Ali Ben Salem</span>
             </div>
-            <div class="divider"></div>
-            <div class="text-center subtitle mt-3">
-                <i class="fas fa-phone icon"></i> Numéro de téléphone : <span style="color: black;">24165981</span>
+            
+            <!-- Artisan's Address -->
+            <div class="text-center subtitle gray mb-3">
+                <i class="fas fa-map-marker-alt icon"></i> 
+                <span style="color: black;">Shop Address: 123 Avenue de la Liberté, Tunis</span>
             </div>
-            <div class="text-center subtitle mt-3">
-                <i class="fas fa-id-badge icon"></i> ID : <span style="color: black;">01254789</span>
+            
+            <!-- Phone Number -->
+            <div class="text-center subtitle mb-3">
+                <i class="fas fa-phone icon"></i> 
+                <span style="color: black;">Phone Number: +216 99 456 789</span>
             </div>
-            <div class="text-center subtitle mt-3">
-                <i class="fab fa-instagram icon"></i> Instagram link : <a href="Yassine" style="color: black;">Yassine-mathlouthi</a>
+            
+            <!-- Date of Registration -->
+            <div class="text-center subtitle gray mb-3">
+                <i class="fas fa-calendar-alt icon"></i> 
+                <span style="color: black;">Registration Date: 2023-11-15</span>
+            </div>
+            
+            <!-- Unique ID -->
+            <div class="text-center subtitle mb-3">
+                <i class="fas fa-id-badge icon"></i> 
+                <span style="color: black;">Artisan ID: 98765432</span>
+            </div>
+            
+            <!-- Shop Description -->
+            <div class="text-center subtitle gray mb-3">
+                <i class="fas fa-info-circle icon"></i> 
+                <span style="color: black;">Description: A shop specialized in handmade artisanal products.</span>
+            </div>
+            
+            <!-- Instagram Link -->
+            <div class="text-center subtitle mb-3">
+                <i class="fab fa-instagram icon"></i> 
+                <a href="https://instagram.com/la_belle_boutique" target="_blank" style="color: black;">
+                    @la_belle_boutique
+                </a>
             </div>
         </div>
+        
 
         <!-- Products Section -->
         <div class="col-lg-8 col-md-6 mx-auto">
@@ -45,12 +86,12 @@
                 <div class="row align-items-center mb-3 d-flex justify-content-between">
                     <div class="col-auto">
                         <div class="name title">
-                            Votre produits:
+                            Your Products:
                         </div>
                     </div>
                     <div class="col-auto">
                         <button class="btn custom-btn" (click)="openDialog()" >
-                            <i class="fas fa-plus-circle icon"  ></i> Ajouter un produit
+                            <i class="fas fa-plus-circle icon"></i> Add Product
                         </button>
                     </div>
                 </div>
@@ -64,11 +105,11 @@
                                 <p class="card-text">A short description highlighting the product’s key features..</p>
                                 <p class="price"><strong>Price:</strong> $20.99</p>
                                 <p class="quantity"><strong>Quantity:</strong> 1 in stock</p>
-                                <button href="#" class="btn custom-btn">
-                                    <i class="fas fa-edit icon"></i> Modifier
+                                <button href="#" class="btn custom-btn" (click)="openDialogEdit()" >
+                                    <i class="fas fa-edit icon"></i> Edit
                                 </button> 
                                 <button class="btn delete-btn">
-                                    <i class="fas fa-trash icon"></i> Supprimer
+                                    <i class="fas fa-trash icon"></i> Delete
                                 </button>
                             </div>
                         </div>
@@ -83,11 +124,11 @@
                                 <p class="card-text">Another product with its unique description and specifications.</p>
                                 <p class="price"><strong>Price:</strong> $15.49</p>
                                 <p class="quantity"><strong>Quantity:</strong> 1 in stock</p>
-                                <button href="#" class="btn custom-btn">
-                                    <i class="fas fa-edit icon"></i> Modifier
+                                <button href="#" class="btn custom-btn" (click)="openDialogEdit()" >
+                                    <i class="fas fa-edit icon"></i> Edit
                                 </button> 
                                 <button class="btn delete-btn">
-                                    <i class="fas fa-trash icon"></i> Supprimer
+                                    <i class="fas fa-trash icon"></i> Delete
                                 </button>
                             </div>
                         </div>
@@ -102,11 +143,11 @@
                                 <p class="card-text">A short description highlighting the product’s key features.</p>
                                 <p class="price"><strong>Price:</strong> $30.00</p>
                                 <p class="quantity"><strong>Quantity:</strong> 1 in stock</p>
-                                <button href="#" class="btn custom-btn">
-                                    <i class="fas fa-edit icon"></i> Modifier
+                                <button href="#" class="btn custom-btn" (click)="openDialogEdit()" >
+                                    <i class="fas fa-edit icon"></i> Edit
                                 </button>
                                 <button class="btn delete-btn">
-                                    <i class="fas fa-trash icon"></i> Supprimer
+                                    <i class="fas fa-trash icon"></i> Delete
                                 </button>
                             </div>
                         </div>
@@ -120,4 +161,3 @@
     </div>
     <app-footer></app-footer>
 </div>
-
