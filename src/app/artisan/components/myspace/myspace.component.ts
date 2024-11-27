@@ -3,13 +3,14 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddProductComponent } from '../add-product/add-product.component';
 import { EditProductComponent } from '../edit-product/edit-product.component';
 import { EditProfileComponent } from '../edit-profile/edit-profile.component';
+import { HeaderComponent } from "../../../layout/components/header/header.component";
 
 @Component({
-  selector: 'app-myspace',
-  standalone: true,
-  imports: [],
-  templateUrl: './myspace.component.html',
-  styleUrl: './myspace.component.css'
+    selector: 'app-myspace',
+    standalone: true,
+    templateUrl: './myspace.component.html',
+    styleUrl: './myspace.component.css',
+    imports: [HeaderComponent]
 })
 export class MyspaceComponent {
   constructor(public dialog: MatDialog) {}
