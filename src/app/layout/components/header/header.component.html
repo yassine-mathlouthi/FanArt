@@ -13,13 +13,16 @@
             <li class="nav-item">
               <a class="nav-link" routerLink="/dashbored" *ngIf="isLoggedIn">Dashbored</a>
             </li>
-            
+            <li class="nav-item" *ngIf="!isLoggedIn" >
+                <a routerLink="/admin/dashboard" class="nav-link">Dashboard</a>
+              </li >
+              <li class="nav-item" *ngIf="!isLoggedIn" >
+                <a routerLink="/artisan/myspace" class="nav-link">My space</a>
+              </li >
             <li class="nav-item" *ngIf="!isLoggedIn" >
               <a routerLink="/login" class="nav-link">Login/Sign in</a>
             </li >
-            <li class="nav-item" *ngIf="!isLoggedIn" >
-                <a routerLink="/artisan/myspace" class="nav-link">My space</a>
-              </li >
+            
             <li class="nav-item ml-4" *ngIf="isLoggedIn" >
               <button class="btn btn-outline-primary" (click)="logout()">Logout</button>
             </li>
