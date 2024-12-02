@@ -5,5 +5,27 @@ import { Injectable } from '@angular/core';
 })
 export class ProductService {
 
-  constructor() { }
+  getAllProducts() {
+    return [
+      { id: 1, name: 'Sunset Painting', price: 150, imageUrl: 'assets/prod.png', description: 'A beautiful sunset painting with vibrant colors.' },
+      { id: 2, name: 'Modern Sculpture', price: 300, imageUrl: 'assets/prod.png', description: 'A sleek and modern sculpture that captures the essence of abstraction.' },
+      { id: 3, name: 'Nature Photography', price: 120, imageUrl: 'assets/prod.png', description: 'A serene photograph showcasing the beauty of nature.' },
+      { id: 4, name: 'Abstract Art', price: 200, imageUrl: 'assets/prod.png', description: 'A striking abstract art piece that will add depth to any space.' },
+      { id: 5, name: 'Cityscape Painting', price: 250, imageUrl: 'assets/prod.png', description: 'A detailed painting of a bustling city skyline.' },
+      { id: 6, name: 'Minimalist Poster', price: 80, imageUrl: 'assets/prod.png', description: 'A modern minimalist poster with clean lines and soothing colors.' },
+      { id: 7, name: 'Fantasy Illustration', price: 180, imageUrl: 'assets/prod.png', description: 'An enchanting illustration that brings fantasy to life.' },
+      { id: 8, name: 'Vintage Portrait', price: 400, imageUrl: 'assets/prod.png', description: 'A timeless vintage portrait that captures the essence of an era.' },
+      { id: 9, name: 'Geometric Design', price: 130, imageUrl: 'assets/prod.png', description: 'A sharp geometric design that adds elegance and sophistication.' },
+    ];
+  }
+  
+  getProducts(page: number = 1, pageSize: number = 4) {
+    const allProducts = this.getAllProducts();
+    const start = (page - 1) * pageSize;
+    const end = start + pageSize;
+    return {
+      products: allProducts.slice(start, end),
+      total: allProducts.length
+    };
+  }
 }
