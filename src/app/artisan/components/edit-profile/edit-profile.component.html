@@ -1,4 +1,4 @@
-<div mat-dialog-content class="container dialog">
+<div mat-dialog-content class="container dialog-content dialog">
     <h1 mat-dialog-title class="text-center">Edit Store</h1>
     <div class="row">
         <div class="col">
@@ -64,10 +64,30 @@
                         </mat-form-field>
                     </div>
                 </div>
+                <div class="row">
+
+                    <div class="col">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>facebook Link</mat-label>
+                            <input matInput placeholder="facebook Link" formControlName="facebookLink">
+
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Instgram Link</mat-label>
+                            <input matInput placeholder="Instgram Link" formControlName="instagramLink">
+
+                        </mat-form-field>
+                    </div>
+                </div>
                 <div>
                     <div class="col-4 mx-auto">
                         
-                            <button mat-raised-button class="custom-btn" (click)="createStore()">Create Store</button>
+                           <button mat-raised-button class="custom-btn" (click)="createStore()">Edit Store</button>
                         
                     </div>
                     

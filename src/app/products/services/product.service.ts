@@ -8,6 +8,9 @@ export class ProductService {
   apiUrl = 'http://localhost:8955';
 
   constructor(private httpClient: HttpClient) { }
+  updateProfile(body:any){
+    return this.httpClient.put(this.apiUrl+"/artisans/updateProfile",body); 
+  }
   addProduct(body:any){
     const userId = sessionStorage.getItem('userId'); // Retrieve the user's ID
     
@@ -23,10 +26,20 @@ export class ProductService {
     const userId = sessionStorage.getItem('userId'); // Retrieve the user's ID
     return this.httpClient.post(`${this.apiUrl}/produits/artisan/getBoutiqueByUserId`,Number(userId) );
   }
-  
+  findProductById(id:number){
+    const userId = sessionStorage.getItem('userId');
+    return this.httpClient.post(`${this.apiUrl}/produits/artisan/getProduitById/`+id.toString(),{
+      userId:userId
+    } );
+  }
+  updateProductById(id:number,body:any){
+    return this.httpClient.put(`${this.apiUrl}/produits/artisan/updateProduit/`+id.toString(),body);
+
+  }
   deleteProductById(id:number){
     const userId = sessionStorage.getItem('userId'); // Retrieve the user's ID
-    return this.httpClient.delete(`${this.apiUrl}/produits/artisan/deleteProduit/`+id.toString());
+    return this.httpClient.delete(`${this.apiUrl}/produits/artisan/deleteProduit/${id.toString()}`);
+    
   }
   getAllProducts() {
     return [

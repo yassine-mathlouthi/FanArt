@@ -7,6 +7,7 @@ import { HeaderComponent } from "../../../layout/components/header/header.compon
 import { FooterComponent } from '../../../layout/components/footer/footer.component';
 import { ProductService } from '../../../products/services/product.service';
 import { CommonModule } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-myspace',
@@ -23,7 +24,6 @@ export class MyspaceComponent  implements OnInit {
     this._prodService.getProductByUSer().subscribe(
       (data) => {
         this.products = data
-        console.log('Fetched products:', this.products);
       },
       (error) => {
         console.error('Error fetching products:', error);
@@ -33,8 +33,6 @@ export class MyspaceComponent  implements OnInit {
     this._prodService.getStoreById().subscribe(
       (data) => {
         this.store = data
-        
-        console.log('Fetched products:', data);
       },
       (error) => {
         console.error('Error fetching products:', error);
@@ -42,19 +40,7 @@ export class MyspaceComponent  implements OnInit {
     )
    
   }
-  test(){
-    
-    this._prodService.getProductByUSer().subscribe(
-      (data) => {
-        
-        console.log('Fetched products:', data);
-      },
-      (error) => {
-        console.error('Error fetching products:', error);
-      }
-    );
-  }
-  constructor(public dialog: MatDialog,private _prodService : ProductService) {}
+  constructor(public dialog: MatDialog,private _prodService : ProductService,private _snackBar : MatSnackBar) {}
 
   openDialog(): void {
     this.dialog.open(AddProductComponent, {
@@ -62,25 +48,33 @@ export class MyspaceComponent  implements OnInit {
       // You can add other configuration options here
     });
   }
-  openDialogEdit(): void {
+  openDialogEdit(id:any): void {
     this.dialog.open(EditProductComponent, {
-      width: '550px', // Adjust width as needed
+      width: '550px', 
+      data: id// Adjust width as needed
       // You can add other configuration options here
     });
   }
+
   open_Dialog_Edit_Profile(): void {
     this.dialog.open(EditProfileComponent, {
-      width: '550px', // Adjust width as needed
+      width: '600px',
+       // Adjust width as needed
       // You can add other configuration options here
     });
   }
-  deleteProduct(id:any){
-    this._prodService.deleteProductById(id).subscribe(
-      (r)=>{
-        console.log("res",r)
+  deleteProduct(id: any) {
+    const isConfirmed = window.confirm("Are you sure you want to delete this product?");
+    
+    if (isConfirmed) {
+      this._prodService.deleteProductById(id).subscribe(
+      )
+     
+        this._snackBar.open("product added successfully", "Close", { duration: 2000, verticalPosition: 'top' })
+        
+      window.location.reload()
       }
-    )
-
   }
+  
   
 }
