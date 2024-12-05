@@ -11,12 +11,12 @@
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/dashbored" *ngIf="isLoggedIn">Dashbored</a>
+              <a class="nav-link" routerLink="/artisan/dashboard" *ngIf="User.role=='ARTISAN'">Dashbored</a>
             </li>
-            <li class="nav-item" *ngIf="!isLoggedIn" >
+            <li class="nav-item" *ngIf="User.role=='ADMIN' " >
                 <a routerLink="/admin/dashboard" class="nav-link">Dashboard</a>
               </li >
-              <li class="nav-item" *ngIf="!isLoggedIn" >
+              <li class="nav-item" *ngIf="isLoggedIn" >
                 <a routerLink="/artisan/myspace" class="nav-link">My space</a>
               </li >
             <li class="nav-item" *ngIf="!isLoggedIn" >

@@ -9,7 +9,7 @@
           </div>
           <div class="row">
             <div class="col">
-              <mat-stepper [linear]="isLinear" #stepper >
+              <mat-stepper [linear]="true" #stepper >
                 <mat-step [stepControl]="firstFormGroup" label="Personal info">
                   <form [formGroup]="firstFormGroup">
                     <!-- First Name -->
@@ -107,8 +107,9 @@
                         <mat-form-field class="example-full-width">
                           <mat-label>Password</mat-label>
                           <input type="password" matInput placeholder="********" formControlName="password">
-          
+                          <mat-error>{{passwordVerif}}</mat-error>
                         </mat-form-field>
+                        
                       </div>
                     </div>
                     <!-- Password Field -->
@@ -117,7 +118,9 @@
                         <mat-form-field class="example-full-width">
                           <mat-label>Password</mat-label>
                           <input type="password" matInput placeholder="********" formControlName="rePassword">
+                          <mat-error>{{passwordMatch}}</mat-error>
                         </mat-form-field>
+
                       </div>
                     </div>
                     

@@ -1,10 +1,33 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
+  apiUrl = 'http://localhost:8955';
 
+  constructor(private httpClient: HttpClient) { }
+  addProduct(body:any){
+    const userId = sessionStorage.getItem('userId'); // Retrieve the user's ID
+    
+    return this.httpClient.post(this.apiUrl+"/produits/artisan/addProduct",body); 
+  }
+  getProductByUSer() {
+    const token = sessionStorage.getItem('token');
+    const role = sessionStorage.getItem('role');  // Retrieve the user's role
+    const userId = sessionStorage.getItem('userId'); // Retrieve the user's ID
+    return this.httpClient.post(`${this.apiUrl}/produits/artisan/getProduitsByArtisanActif`,Number(userId) );
+  }
+  getStoreById(){
+    const userId = sessionStorage.getItem('userId'); // Retrieve the user's ID
+    return this.httpClient.post(`${this.apiUrl}/produits/artisan/getBoutiqueByUserId`,Number(userId) );
+  }
+  
+  deleteProductById(id:number){
+    const userId = sessionStorage.getItem('userId'); // Retrieve the user's ID
+    return this.httpClient.delete(`${this.apiUrl}/produits/artisan/deleteProduit/`+id.toString());
+  }
   getAllProducts() {
     return [
       { id: 1, name: 'Sunset Painting', price: 150, imageUrl: 'assets/prod.png', description: 'A beautiful sunset painting with vibrant colors.' },
@@ -18,7 +41,7 @@ export class ProductService {
       { id: 9, name: 'Geometric Design', price: 130, imageUrl: 'assets/prod.png', description: 'A sharp geometric design that adds elegance and sophistication.' },
     ];
   }
-  
+
   getProducts(page: number = 1, pageSize: number = 4) {
     const allProducts = this.getAllProducts();
     const start = (page - 1) * pageSize;
