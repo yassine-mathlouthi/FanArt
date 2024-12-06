@@ -1,0 +1,163 @@
+
+<app-header></app-header>
+<div class="container-fluid body">
+    <div class="row">
+        <!-- Profile Card -->
+        
+        <div class="profile-info-card col-lg-4 col-md-5 mx-auto">
+            <!-- Header with Title and Edit Button -->
+            <div class="row align-items-center mb-3 d-flex justify-content-between">
+                <div class="col-auto">
+                    <div class="name title">
+                        Your Shop:
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <button class="btn custom-btn" (click)="open_Dialog_Edit_Profile()">
+                        <i class="fas fa-edit icon"></i> Edit
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Profile Picture -->
+            <div class="text-center mb-3">
+                <img 
+                    src="https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=" 
+                    class="img img-fluid"
+                    style="border-radius: 50%; width: 150px; height: 150px;"
+                >
+            </div>
+        
+            <!-- Shop Name -->
+            <div class="text-center name title mb-3">
+                <i class="fas fa-store icon"></i> 
+                <span style="color: black;">Shop Name: La Belle Boutique</span>
+            </div>
+        
+            <!-- Artisan's Full Name -->
+            <div class="text-center subtitle gray mb-3">
+                <i class="fas fa-user icon"></i> 
+                <span style="color: black;">Name: Ali Ben Salem</span>
+            </div>
+            
+            <!-- Artisan's Address -->
+            <div class="text-center subtitle gray mb-3">
+                <i class="fas fa-map-marker-alt icon"></i> 
+                <span style="color: black;">Shop Address: 123 Avenue de la Liberté, Tunis</span>
+            </div>
+            
+            <!-- Phone Number -->
+            <div class="text-center subtitle mb-3">
+                <i class="fas fa-phone icon"></i> 
+                <span style="color: black;">Phone Number: +216 99 456 789</span>
+            </div>
+            
+            <!-- Date of Registration -->
+            <div class="text-center subtitle gray mb-3">
+                <i class="fas fa-calendar-alt icon"></i> 
+                <span style="color: black;">Registration Date: 2023-11-15</span>
+            </div>
+            
+            <!-- Unique ID -->
+            <div class="text-center subtitle mb-3">
+                <i class="fas fa-id-badge icon"></i> 
+                <span style="color: black;">Artisan ID: 98765432</span>
+            </div>
+            
+            <!-- Shop Description -->
+            <div class="text-center subtitle gray mb-3">
+                <i class="fas fa-info-circle icon"></i> 
+                <span style="color: black;">Description: A shop specialized in handmade artisanal products.</span>
+            </div>
+            
+            <!-- Instagram Link -->
+            <div class="text-center subtitle mb-3">
+                <i class="fab fa-instagram icon"></i> 
+                <a href="https://instagram.com/la_belle_boutique" target="_blank" style="color: black;">
+                    la_belle_boutique
+                </a>
+            </div>
+        </div>
+        
+
+        <!-- Products Section -->
+        <div class="col-lg-8 col-md-6 mx-auto">
+            <div class="profile-info-card">
+                <div class="row align-items-center mb-3 d-flex justify-content-between">
+                    <div class="col-auto">
+                        <div class="name title">
+                            Your Products:
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn custom-btn" (click)="openDialog()" >
+                            <i class="fas fa-plus-circle icon"></i> Add Product
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Product Card 1 -->
+                    <div class="col-sm-6 col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <img class="card-img-top" src="https://i.etsystatic.com/19663062/r/il/25f15d/3673875542/il_570xN.3673875542_q382.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Product Title 1</h5>
+                                <p class="card-text">A short description highlighting the product’s key features..</p>
+                                <p class="price"><strong>Price:</strong> $20.99</p>
+                                <p class="quantity"><strong>Quantity:</strong> 1 in stock</p>
+                                <button href="#" class="btn custom-btn" (click)="openDialogEdit()" >
+                                    <i class="fas fa-edit icon"></i> Edit
+                                </button> 
+                                <button class="btn delete-btn">
+                                    <i class="fas fa-trash icon"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Product Card 2 -->
+                    <div class="col-sm-6 col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <img class="card-img-top" src="https://i.etsystatic.com/16790720/r/il/e77c4c/5867819384/il_570xN.5867819384_48i8.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Product Title 2</h5>
+                                <p class="card-text">Another product with its unique description and specifications.</p>
+                                <p class="price"><strong>Price:</strong> $15.49</p>
+                                <p class="quantity"><strong>Quantity:</strong> 1 in stock</p>
+                                <button href="#" class="btn custom-btn" (click)="openDialogEdit()" >
+                                    <i class="fas fa-edit icon"></i> Edit
+                                </button> 
+                                <button class="btn delete-btn">
+                                    <i class="fas fa-trash icon"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Product Card 3 -->
+                    <div class="col-sm-6 col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <img class="card-img-top" src="https://www.singulart.com/images/artworks/pictures/cropped/2653/8787/base/serie_8787_4ef0797865e3770e787eebc2a90849b2.jpeg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Product Title 3</h5>
+                                <p class="card-text">A short description highlighting the product’s key features.</p>
+                                <p class="price"><strong>Price:</strong> $30.00</p>
+                                <p class="quantity"><strong>Quantity:</strong> 1 in stock</p>
+                                <button href="#" class="btn custom-btn" (click)="openDialogEdit()" >
+                                    <i class="fas fa-edit icon"></i> Edit
+                                </button>
+                                <button class="btn delete-btn">
+                                    <i class="fas fa-trash icon"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Additional product cards can be added similarly -->
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
