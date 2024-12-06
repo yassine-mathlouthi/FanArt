@@ -1,8 +1,13 @@
 <div class="card app-product-card" (click)="openModal(product)">
     <img [src]="product.imageUrl" class="card-img-top" alt="{{ product.name }}">
     <div class="card-body">
-        <h5 class="card-title">{{ product.name }}</h5>
-        <p class="card-text">{{ product.price | currency}}</p>
+        <div class="product-info">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.price | currency }}</p>
+        </div>
+        <div class="product-meta">
+            <span class="store-name">{{ product.store.name }}</span>
+        </div>
     </div>
 </div>
 
@@ -11,8 +16,13 @@
     <div class="modal-dialog" (click)="$event.stopPropagation()">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">{{ selectedProduct?.name }}</h5>
-                <button type="button" class="close" (click)="closeModal()">&times;</button>
+                <div class="modal-title-container">
+                    <div class="modal-title-wrapper">
+                        <h5 class="modal-title">{{ selectedProduct?.name }}</h5>
+                        <span class="store-name-modal">{{ selectedProduct?.store.name }}</span>
+                    </div>
+                    <button type="button" class="close" (click)="closeModal()">&times;</button>
+                </div>
             </div>
             <div class="modal-body">
                 <div class="modal-body-content">
@@ -20,12 +30,30 @@
                     <div class="modal-image">
                         <img [src]="selectedProduct?.imageUrl" class="img-fluid" alt="{{ selectedProduct?.name }}">
                     </div>
-
                     <!-- Product Details Section -->
                     <div class="modal-details">
-                        <p>{{ selectedProduct?.description }}</p>
-                        <p><strong>{{ selectedProduct?.price | currency }}</strong></p>
-                        <button class="btn btn-primary" (click)="addToCart(selectedProduct)">Add to Cart</button>
+                        <p class="product-description">{{ selectedProduct?.description }}</p>
+                        <div class="product-meta">
+                            <span class="artist-name">By {{ selectedProduct?.artistName }}</span>
+                        </div>
+
+                        <div class="price-quantity-container">
+                            <!-- Price Section -->
+                            <div class="price-quantity-wrapper">
+                                <div class="product-price">
+                                    <strong>{{ selectedProduct?.price | currency }}</strong>
+                                </div>
+
+                                <!-- Quantity Selector -->
+                                <div class="quantity-selector">
+                                    <label for="quantity">Quantity:</label>
+                                    <input type="number" id="quantity" [(ngModel)]="selectedQuantity" [min]="1"
+                                        [max]="selectedProduct?.stock" step="1" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary" (click)="addToCart()">Add to Cart</button>
                     </div>
                 </div>
             </div>

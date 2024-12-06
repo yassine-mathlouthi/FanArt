@@ -1,29 +1,33 @@
+
 .checkout-card {
     width: 80%;
-    max-width: 600px; /* Slightly narrower for better focus */
-    border-radius: 20px; /* Slightly more rounded corners */
+    max-width: 600px;
+    border-radius: 20px;
     background-color: #ffffff;
     padding: 40px;
-    box-shadow: 
-        0 15px 30px rgba(0, 0, 0, 0.08), 
-        0 10px 20px rgba(0, 0, 0, 0.05); /* More sophisticated shadow */
-    border: 1px solid rgba(0, 0, 0, 0.05); /* Subtle border */
+    font-family: 'Source Sans Pro', sans-serif;
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.08),
+        0 10px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease;
 }
 
 .checkout-card:hover {
-    transform: translateY(-5px); /* Slight lift effect on hover */
+    transform: translateY(-5px);
 }
 
 .checkout-card h3 {
+    font-family: 'Lora', serif;
     font-weight: 700;
     font-size: 2.2rem;
-    color: #2c3e50; /* Slightly dark, professional color */
+    color: #2c3e50;
     margin-bottom: 30px;
-    letter-spacing: -1px; /* Tighter letter spacing */
+    letter-spacing: -1px;
 }
 
 .form-label {
+    font-family: 'Source Sans Pro', sans-serif;
     font-weight: 600;
     color: #495057;
     margin-bottom: 8px;
@@ -32,30 +36,32 @@
 
 .form-control,
 .form-select {
+    font-family: 'Source Sans Pro', sans-serif;
     border-radius: 10px;
     padding: 12px 15px;
     border: 1px solid #ced4da;
-    transition: 
-        box-shadow 0.3s ease, 
+    transition:
+        box-shadow 0.3s ease,
         border-color 0.3s ease;
 }
 
 .form-control:focus,
 .form-select:focus {
     border-color: #5bc0de;
-    box-shadow: 
-        0 0 0 0.2rem rgba(91, 192, 222, 0.25); /* Softer, more modern focus effect */
+    box-shadow:
+        0 0 0 0.2rem rgba(91, 192, 222, 0.25);
     outline: none;
 }
 
 .btn-primary {
-    background-color: #3498db; /* Slightly different blue */
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #3498db;
     border: none;
     border-radius: 50px;
     padding: 12px 30px;
     font-weight: 600;
     letter-spacing: 0.5px;
-    transition: 
+    transition:
         background-color 0.3s ease,
         transform 0.2s ease;
 }
@@ -72,16 +78,22 @@
 }
 
 small.text-danger {
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 0.8rem;
-    color: #e74c3c; /* Slightly more vibrant red */
+    color: #e74c3c;
     margin-top: 5px;
     display: block;
     animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* Responsive adjustments */

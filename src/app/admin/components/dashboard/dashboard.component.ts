@@ -1,136 +1,148 @@
-import { Component, AfterViewInit, ViewChild, inject } from '@angular/core';
-import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { HeaderComponent } from '../../../layout/components/header/header.component';
-import { BaseChartDirective } from 'ng2-charts';
-import { ChartConfiguration, ChartType } from 'chart.js';
-import { MatButtonModule } from '@angular/material/button';
-import { FooterComponent } from '../../../layout/components/footer/footer.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { AdminService } from '../../services/admin.service';
+import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
+import { CommonModule } from '@angular/common';
+import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2-charts';
+import { FormsModule } from '@angular/forms';
 
-export interface Artisan {
-  idArtisan: number;
-  nom: string;
-  prenom: string;
-  adresseBoutique: string;
-  numeroTelephone: string;
-  dateInscription: string;
-  nomBoutique: string;
-  descriptionBoutique: string;
-  InstagramUrl: string;
-}
-
-const ARTISAN_DATA: Artisan[] = [
-  {
-    idArtisan: 1,
-    nom: 'Doe',
-    prenom: 'John',
-    adresseBoutique: '123 Main St',
-    numeroTelephone: '555-1234',
-    dateInscription: '2024-11-28',
-    nomBoutique: 'John’s Crafts',
-    descriptionBoutique: 'Handmade wooden crafts.',
-    InstagramUrl: 'https://instagram.com/johnscrafts',
-  },
-  {
-    idArtisan: 2,
-    nom: 'Smith',
-    prenom: 'Jane',
-    adresseBoutique: '456 Side St',
-    numeroTelephone: '555-5678',
-    dateInscription: '2024-10-15',
-    nomBoutique: 'Jane’s Jewelry',
-    descriptionBoutique: 'Custom-made jewelry.',
-    InstagramUrl: 'https://instagram.com/janesjewelry',
-  },
-  {
-    idArtisan: 1,
-    nom: 'Doe',
-    prenom: 'John',
-    adresseBoutique: '123 Main St',
-    numeroTelephone: '555-1234',
-    dateInscription: '2024-11-28',
-    nomBoutique: 'John’s Crafts',
-    descriptionBoutique: 'Handmade wooden crafts.',
-    InstagramUrl: 'https://instagram.com/johnscrafts',
-  },
-  {
-    idArtisan: 1,
-    nom: 'Doe',
-    prenom: 'John',
-    adresseBoutique: '123 Main St',
-    numeroTelephone: '555-1234',
-    dateInscription: '2024-11-28',
-    nomBoutique: 'John’s Crafts',
-    descriptionBoutique: 'Handmade wooden crafts.',
-    InstagramUrl: 'https://instagram.com/johnscrafts',
-  },
-  {
-    idArtisan: 1,
-    nom: 'Doe',
-    prenom: 'John',
-    adresseBoutique: '123 Main St',
-    numeroTelephone: '555-1234',
-    dateInscription: '2024-11-28',
-    nomBoutique: 'John’s Crafts',
-    descriptionBoutique: 'Handmade wooden crafts.',
-    InstagramUrl: 'https://instagram.com/johnscrafts',
-  },
-];
 
 @Component({
   selector: 'app-dashboard',
-  standalone: true , 
-  imports: [MatTableModule, MatSortModule,HeaderComponent,BaseChartDirective,MatButtonModule,FooterComponent],
+  standalone: true,
+  imports: [CommonModule, BaseChartDirective, FormsModule],
+  providers: [provideCharts(withDefaultRegisterables())],
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  styleUrl: './dashboard.component.css'
 })
-export class DashboardComponent implements AfterViewInit {
-  private _liveAnnouncer = inject(LiveAnnouncer);
+export class DashboardComponent implements OnInit {
+  revenueOverTime: any;
+  ordersOverTime: any;
+  storesOverTime: any;
+  totalStores: number | undefined;
+  totalOrders: number | undefined;
+  totalRevenue: number | undefined;
+  topSellingArtworks: any[] | undefined;
+  customerDemographics: any;
 
-  displayedColumns: string[] = ['idArtisan', 'nom', 'prenom', 'adresseBoutique', 'numeroTelephone', 'dateInscription', 'nomBoutique', 'actions'];
-  dataSource = new MatTableDataSource(ARTISAN_DATA);
+  selectedTimePeriod: string = 'monthly';
 
-  @ViewChild(MatSort) sort!: MatSort;
-
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-  }
-
-  announceSortChange(sortState: Sort) {
-    if (sortState.direction) {
-      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-    } else {
-      this._liveAnnouncer.announce('Sorting cleared');
-    }
-  }
-
-  deleteRow(idArtisan: number) {
-    this.dataSource.data = this.dataSource.data.filter((artisan) => artisan.idArtisan !== idArtisan);
-  }
-  public chartType: ChartType = 'line'; // Explicitly use the ChartType type.
-
-  // Chart Data
-  public chartData: ChartConfiguration['data'] = {
-    labels: ['January', 'February', 'March', 'April', 'May'],
-    datasets: [
-      {
-        label: 'Sales',
-        data: [30, 50, 40, 60, 70],
-        backgroundColor: 'rgba(75,192,192,0.6)',
-        borderColor: 'rgba(75,192,192,1)',
-        borderWidth: 1,
-      },
-    ],
+  // Chart data
+  lineChartLabels: string[] = [];
+  lineChartOptions: ChartOptions = {
+    responsive: true
   };
+  lineChartLegend = true;
+  lineChartType: ChartType = 'line';
 
-  // Chart Options
-  public chartOptions: ChartConfiguration['options'] = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top', // Specify a valid position: 'top', 'left', 'right', 'bottom'.
-      },
+  revenueChartData: ChartDataset[] = [];
+  ordersStoresChartData: ChartDataset[] = [];
+
+  barChartData: ChartDataset[] = [];
+  barChartLabels: string[] = [];
+  barChartOptions: ChartOptions = {
+    responsive: true
+  };
+  barChartLegend = true;
+  barChartType: ChartType = 'bar';
+
+  pieChartData: ChartDataset[] = [];
+  pieChartLabels: string[] = [];
+  pieChartOptions: ChartOptions = {
+    responsive: true
+  };
+  pieChartLegend = true;
+  pieChartType: ChartType = 'pie';
+
+  isLoading: boolean = true;
+
+  chartAnimationOptions: ChartOptions = {
+    animation: {
+      duration: 1500,
+      easing: 'easeOutQuart'
     },
+    responsive: true,
+    hover: {
+      
+    }
   };
+
+  constructor(private adminService: AdminService) { }
+
+  ngOnInit(): void {
+    this.adminService.getDashboardData().subscribe({next: (data) => {
+      this.totalStores = data.totalStores;
+      this.totalOrders = data.totalOrders;
+      this.totalRevenue = data.totalRevenue;
+      this.topSellingArtworks = data.topSellingArtworks;
+      this.customerDemographics = data.customerDemographics;
+
+      this.revenueOverTime = data.revenueOverTime;
+      this.ordersOverTime = data.ordersOverTime;
+      this.storesOverTime = data.storesOverTime;
+
+      this.prepareBarChart();
+      this.preparePieChart();
+      this.onTimePeriodChange(this.selectedTimePeriod)
+
+      this.isLoading = false;
+    },
+      error: (error) => {
+        console.error('Dashboard data fetch failed', error);
+        this.isLoading = false;
+      }
+  });
+}
+
+
+
+timePeriods: string[] = ['monthly', 'quarterly', 'yearly'];
+
+onTimePeriodChange(period: string): void {
+  this.selectedTimePeriod = period;
+  const labels = this.revenueOverTime[this.selectedTimePeriod].map((item: any) =>
+    this.selectedTimePeriod === 'monthly' ? item.month : (item.quarter || item.year)
+  );
+
+  const revenueData = this.revenueOverTime[this.selectedTimePeriod].map((item: any) => item.revenue);
+  const ordersData = this.ordersOverTime[this.selectedTimePeriod].map((item: any) => item.orders);
+  const storesData = this.storesOverTime[this.selectedTimePeriod].map((item: any) => item.storesAdded);
+
+  this.lineChartLabels = labels;
+
+  // Chart 1: Revenue
+  this.revenueChartData = [
+    { data: revenueData, label: 'Revenue', borderColor: 'green', fill: false },
+  ];
+
+  // Chart 2: Orders and Stores
+  this.ordersStoresChartData = [
+    { data: ordersData, label: 'Orders', borderColor: 'blue', fill: false },
+    { data: storesData, label: 'Stores Added', borderColor: 'red', fill: false },
+  ];
+}
+
+prepareBarChart(): void {
+  if(this.topSellingArtworks) {
+  this.barChartLabels = this.topSellingArtworks.map((artwork: any) => artwork.name);
+  this.barChartData = [
+    {
+      data: this.topSellingArtworks.map((artwork: any) => artwork.totalSales),
+      label: 'Top Selling Artworks'
+    }
+  ];
+}
+  }
+
+preparePieChart(): void {
+  const demographicKeys: string[] = Object.keys(this.customerDemographics);
+  const demographicValues: number[] = Object.values(this.customerDemographics) as number[];
+
+  this.pieChartLabels = demographicKeys;
+  this.pieChartData = [
+    {
+      data: demographicValues,
+      backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
+    }
+  ];
+}
 }
