@@ -17,7 +17,7 @@ export class AuthService {
       },
     };
 
-    return this.httpClient.post<any>(`${this.apiUrl}/api/boutiques/createBoutique`, body, httpOptions);
+    return this.httpClient.post<any>(`${this.apiUrl}/boutiques/createBoutique`, body, httpOptions);
   }
 
   login(body:any) {

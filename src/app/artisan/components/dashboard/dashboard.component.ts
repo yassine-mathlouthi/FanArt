@@ -1,82 +1,65 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatFormField, matFormFieldAnimations, MatLabel } from '@angular/material/form-field';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
-import { MatTableModule } from '@angular/material/table';
-import { BaseChartDirective } from 'ng2-charts';
+import { MatTable, MatTableModule } from '@angular/material/table';
+import { BaseChartDirective } from 'ng2-charts'; // Import NgChartsModule
 import { FooterComponent } from '../../../layout/components/footer/footer.component';
 import { HeaderComponent } from '../../../layout/components/header/header.component';
+import { ProductService } from '../../../products/services/product.service';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [MatFormField,MatLabel,MatSelect,MatOption,CommonModule, MatTableModule, MatSortModule,HeaderComponent,BaseChartDirective,MatButtonModule,FooterComponent],
+  imports:[MatTable, MatFormField,MatLabel,MatSelect,MatOption,CommonModule, MatTableModule, MatSortModule,HeaderComponent,BaseChartDirective,MatButtonModule,FooterComponent],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+  styleUrl: './dashboard.component.css',
 })
-export class DashboardComponent {
-  commands = [
-    {
-      idCommande: 101,
-      dateCommande: '2024-12-01',
-      prixTotalCommande: 120.5,
-      adresseLivraison: '123 Main Street, Tunis',
-      status: 'Delivered', // Default status
-    },
-    {
-      idCommande: 102,
-      dateCommande: '2024-12-02',
-      prixTotalCommande: 250.0,
-      adresseLivraison: '456 Elm Street, Sfax',
-      status: 'In Progress', // Default status
-    },
-    {
-      idCommande: 103,
-      dateCommande: '2024-12-03',
-      prixTotalCommande: 320.75,
-      adresseLivraison: '789 Oak Street, Nabeul',
-      status: 'waiting', // Default status
-    },
-  ];
-  
+export class DashboardComponent implements OnInit {
+  constructor(private _productService: ProductService) {}
 
-  // Chart Data
-  chartLabels = ['Commande 101', 'Commande 102', 'Commande 103'];
-  chartData = [
-    {
-      data: [120.5, 250.0, 320.75],
-      label: 'Total Price',
-      backgroundColor: '#3f51b5',
-      borderColor: '#3f51b5',
-    },
-  ];
+  data: any;
+  verif = 0;
+
+  // Chart properties
+  chartLabels: string[] = [];
+  chartData: any[] = [];
   chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
   };
-  updateStatus(command: any, newStatus: string): void {
-    const confirmation = confirm(
-      `Are you sure you want to change the status of Command ${command.idCommande} to "${newStatus}"?`
-    );
-    if (confirmation) {
-      command.status = newStatus;
-    }
-  }
-  
 
-  // Get Status Class for Styling
-  getStatusClass(status: string): string {
-    if (status === 'Delivered') {
-      return 'text-success';
-    } else if (status === 'In Progress') {
-      return 'text-warning';
-    } else if (status === 'waiting') {
-      return 'text-danger';
-    }
-    return '';
+  ngOnInit(): void {
+    this._productService.getList().subscribe(
+      (response) => {
+        console.log('API Response:', response);
+
+        this.data = response; // Assume response is an array of commands
+        this.verif = 200; // Success
+
+        // Process data for the chart
+        this.updateChart(this.data);
+      },
+      (err) => {
+        console.error('API Error:', err);
+        this.verif = err.status;
+        this.data = []; // Set data to empty if there's an error
+      }
+    );
   }
-  
+
+  updateChart(data: any[]): void {
+    // Extract labels and data dynamically
+    this.chartLabels = data.map((command) => `Commande ${command.idCommande}`);
+    this.chartData = [
+      {
+        data: data.map((command) => command.prixTotalCommande),
+        label: 'Total Price',
+        backgroundColor: '#3f51b5',
+        borderColor: '#3f51b5',
+      },
+    ];
+  }
 }

@@ -37,4 +37,46 @@
     color: red !important;
     
   }
+
+.product-image{
+  width: 70px;
+}
+.custom-card {
+  border: 1px solid #ddd; /* Light border for the card */
+  border-radius: 8px; /* Rounded corners */
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px;
+  background-color: #fff;
+  height: 100%;
+}
+
+.custom-card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+.card-img-top {
+  max-height: 150px;
+  object-fit: cover;
+  border-radius: 8px; /* Rounded corners for the image */
+}
+
+.card-body {
+  padding: 10px;
+  text-align: center; /* Center text */
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #555;
+}
+
   

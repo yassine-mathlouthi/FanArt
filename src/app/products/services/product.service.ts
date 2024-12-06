@@ -8,6 +8,10 @@ export class ProductService {
   apiUrl = 'http://localhost:8955';
 
   constructor(private httpClient: HttpClient) { }
+  getList(){
+    const userId = sessionStorage.getItem('userId'); // Retrieve the user's ID
+    return this.httpClient.get(this.apiUrl+"/Commandes/getCommandeByIDArtisan/"+userId); 
+  }
   addProduct(body:any){
     const userId = sessionStorage.getItem('userId'); // Retrieve the user's ID
     
